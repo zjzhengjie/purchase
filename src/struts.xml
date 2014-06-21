@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<include file="struts-forward.xml" />
+	
+	<package name="default" namespace="/" extends="struts-default">
+	
+		<!-- 定义一个拦截器 -->
+		<interceptors>
+			<interceptor name="trimInterceptor" class="trimInterceptor"></interceptor>
+			<interceptor name="exceptionInterceptor" class="exceptionInterceptor"></interceptor>
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="baseInterceptorStack">
+				<interceptor-ref name="trimInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<interceptor-ref name="exceptionInterceptor"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 设置所有Action自动调用的拦截器栈 -->
+		<default-interceptor-ref name="baseInterceptorStack"></default-interceptor-ref>
+		
+		<!-- 定义全局Result -->
+		<global-results>
+			<!-- 当返回login视图名时，转入/WEB-INF/content/login.jsp -->
+			<result name="login">/WEB-INF/content/login.jsp</result>
+			<!-- 当返回err视图名时，转入/WEB-INF/content/error.jsp -->
+			<result name="err">/WEB-INF/content/error.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+           <exception-mapping result="err"
+              exception="com.wantdo.exception.SystemException"></exception-mapping>
+       </global-exception-mappings>
+
+	
+		<action name="loginaction" class="LoginAction">
+			<result>/WEB-INF/content/main.jsp</result>
+			<result name="input">/WEB-INF/content/login.jsp</result>
+			<result name="error">/WEB-INF/content/login.jsp</result>
+		</action>
+		
+		<action name="messyhouse" class="MessyHouseAction">
+			<result>/WEB-INF/content/messyhouse/messyhouse.jsp</result>
+		</action>
+		
+		<action name="standardsupplier" class="StandardSupplierAction">
+			<result>/WEB-INF/content/standardsupplier/standardsupplier.jsp</result>
+		</action>
+		
+		<action name="batchinput" class="BatchInputAction">
+			<result>/WEB-INF/content/batchinput/batchinput.jsp</result>
+		</action>
+		
+		<action name="statequery" class="StateQueryAction">
+			<result>/WEB-INF/content/statequery/statequery.jsp</result>
+		</action>
+		
+		<action name="reports" class="ReportsAction">
+			<result>/WEB-INF/content/reports/reports.jsp</result>
+		</action>
+	</package>
+	
+</struts>    
