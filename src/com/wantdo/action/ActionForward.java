@@ -10,11 +10,11 @@ import com.opensymphony.xwork2.ActionSupport;
 
 * @ClassName: ActionForward 
 
-* @Description: Ìø×ªAction
+* @Description: ï¿½ï¿½×ªAction
 
 * @author sa luanx@wantdo.com
 
-* @date 2014-4-16 ÏÂÎç5:49:51 
+* @date 2014-4-16 ï¿½ï¿½ï¿½ï¿½5:49:51 
 
 *
  */
@@ -27,6 +27,7 @@ public class ActionForward extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		logger.info("forward");
+		System.out.print("admin");
 		return SUCCESS;
 	}
 	
