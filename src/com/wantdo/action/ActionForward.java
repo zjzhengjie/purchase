@@ -27,7 +27,6 @@ public class ActionForward extends ActionSupport {
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
 		logger.info("forward");
-		System.out.print("admin");
 		return SUCCESS;
 	}
 	
